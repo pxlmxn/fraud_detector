@@ -1,0 +1,30 @@
+services:
+    django:
+        build: ./Django
+        container_name: django
+        command: python3 manage.py runserver 0.0.0.0:8000
+        ports:
+            - 8000:8000
+        volumes:
+            - ./Django:/django/
+
+    vuejs:
+        build: ./VueJS
+        container_name: vuejs
+        command: nginx -g "daemon off;"
+        ports:
+            - 8080:80
+        depends_on:
+            - django
+        volumes:
+            - ./VueJS:/vue/
+
+    telegram:
+        build: ./Bot
+        container_name: bot
+        command: python3 bot.py
+        depends_on:
+            - django
+        restart: always
+        volumes:
+            - ./Bot:/bot/
