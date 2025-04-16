@@ -17,28 +17,28 @@ import requests
 
 class TransactionsView(APIView):
     def get(self, request):
-        txns = BankTransactions.objects.all()
+        txns = BankTransaction.objects.all()
         serialized = TransactionSerializer(txns, many=True)
         return Response(serialized.data)
 
 
 class SingleTransactionView(APIView):
     def get(self, request, id):
-        txn = BankTransactions.objects.get(id=id)
+        txn = BankTransaction.objects.get(id=id)
         serialized = TransactionSerializer(txn)
         return Response(serialized.data)
 
 
 class ComplaintsView(APIView):
     def get(self, request):
-        complains = BankComplaints.objects.all()
+        complains = BankComplaint.objects.all()
         serialized = ComplaintSerializer(complains, many=True)
         return Response(serialized.data)
 
 
 class SingleComplaintView(APIView):
     def get(self, request, user_id):
-        complain = BankComplaints.objects.get(user_id)
+        complain = BankComplaint.objects.get(user_id)
         serialized = ComplaintSerializer(complain)
         return Response(serialized.data)
 

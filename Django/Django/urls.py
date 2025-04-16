@@ -17,14 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from FraudDetector import views
+
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('txns/', admin.site.urls, name='transactions'),
-    path('txn/', admin.site.urls, name='transaction'),
-    path('complaints/', admin.site.urls, name='complaints'),
-    path('complaint/', admin.site.urls, name='complaint'),
+    path('transactions/', views.TransactionsView.as_view(), name='transactions'),
+    path('transaction/<int:id>', views.TransactionsView.as_view(), name='transaction'),
+    path('complaints/', views.ComplaintsView.as_view(), name='complaints'),
+    path('complaint/<str:userId>', views.SingleComplaintView.as_view(), name='complaint'),
     path('api/scheme/', SpectacularAPIView.as_view(), name='scheme'),
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='scheme'), name='docs'), 
 ]

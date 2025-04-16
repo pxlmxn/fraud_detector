@@ -4,11 +4,11 @@ from .models import *
 
 class TransactionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = BankTransactions
+        model = BankTransaction
         fields = '__all__'
 
     def create(self, validated_data):
-        return BankTransactions.objects.create(**validated_data)
+        return BankTransaction.objects.create(**validated_data)
 
 
 class TransactionCreateSerializer(serializers.Serializer):
@@ -17,11 +17,11 @@ class TransactionCreateSerializer(serializers.Serializer):
 
 class ComplaintSerializer(serializers.ModelSerializer):
     class Meta:
-        model = BankComplaints
+        model = BankComplaint
         fields = '__all__'
 
     def create(self, validated_data):
-        return BankComplaints.objects.create(**validated_data)
+        return BankComplaint.objects.create(**validated_data)
 
 
 class ComplaintCreateSerializer(serializers.Serializer):
