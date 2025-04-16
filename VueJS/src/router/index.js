@@ -11,17 +11,17 @@ const router = createRouter({
     {
       path: '/reg',
       name: 'reg',
-      component: () => import('../views/RegView'),
+      component: () => import('../views/RegView.vue'),
     },
     {
       path: '/complaints',
       name: 'complaints',
-      component: () => import('../views/ComplaintsView'),
+      component: () => import('../views/ComplaintsView.vue'),
     },
     {
       path: '/complaint',
       name: 'complaint',
-      component: () => import('../views/ComplaintView'),
+      component: () => import('../views/ComplaintView.vue'),
     },
     {
       path: '/transactions',

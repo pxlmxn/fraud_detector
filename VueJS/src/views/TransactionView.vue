@@ -1,15 +1,27 @@
+<script>
+import axios from "axios";
+export default {
+    data() {
+		return {
+			txn: {}
+		};
+	},
+    mounted() {
+        this.loadTxn();
+    },
+    methods: {
+        async loadTxn() {
+            let response = await axios.get('http://127.0.0.1:8000/txn');
+            this.txn = response.data;
+        },
+    },
+}
+</script>
+
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
+<style scope>
+
 </style>

@@ -4,6 +4,6 @@
 <template>
 
 </template>
-<style>
+<style scope>
 
 </style>

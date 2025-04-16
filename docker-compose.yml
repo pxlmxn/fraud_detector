@@ -5,6 +5,7 @@ services:
         command: python3 manage.py runserver 0.0.0.0:8000
         ports:
             - 8000:8000
+        restart: unless-stopped
         volumes:
             - ./Django:/django/
 
@@ -16,6 +17,7 @@ services:
             - 8080:80
         depends_on:
             - django
+        restart: unless-stopped
         volumes:
             - ./VueJS:/vue/
 
@@ -25,6 +27,6 @@ services:
         command: python3 bot.py
         depends_on:
             - django
-        restart: always
+        restart: unless-stopped
         volumes:
             - ./Bot:/bot/
